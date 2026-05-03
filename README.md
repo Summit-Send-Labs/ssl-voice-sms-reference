@@ -157,7 +157,7 @@ Summit Send Labs LLC is a Colorado AI product studio based in Breckenridge. SSL 
 By day, I'm a PMO Manager at O'Reilly Auto Parts overseeing enterprise platform delivery across Supply Chain (Manhattan TMS), Finance (Oracle ERP), and HR (Workday). SSL is what I build outside that role.
 
 - Website: [summitsendlabs.com](https://summitsendlabs.com)
-- LinkedIn: [Travis Opheim](https://linkedin.com/in/YOUR_HANDLE)  <!-- TODO: replace YOUR_HANDLE before publishing -->
+- LinkedIn: [Travis Opheim](https://www.linkedin.com/in/travisopheim)
 
 ---
 
