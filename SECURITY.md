@@ -23,7 +23,7 @@ This repo is a **deliberately curated subset** of the live Summit Send Labs voic
 - The full SSL business context, services, and escalation rules embedded in the prompt
 - Customer-specific prompt overrides
 
-**How it's handled:** The repo includes a generic example prompt in `examples/system-prompt.example.txt` that demonstrates structure (role, scope, tone, fallback behavior) without revealing the real content. The LLM integration code shows how the prompt is injected, not what it contains.
+**How it's handled:** The repo includes a generic example prompt in `examples/system-prompt.example.txt` that demonstrates structure (role, scope, tone, fallback behavior) without revealing the real content. The service module that handles LLM dispatch (`src/services/telnyx.js`) is stubbed in this repo — the comments document what production handles without exposing the implementation.
 
 **Why:** The production prompt is SSL's primary IP at this stage. Prompt strategy — how context is structured, how the assistant is bounded, how it handles edge cases — is the differentiator between a generic LLM wrapper and a useful product. Sharing it publicly would be giving away the actual product. Sharing it under NDA with a hiring team is a different conversation, and I'm happy to do that.
 

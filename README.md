@@ -84,6 +84,7 @@ The honest framing: this is a working system, not a battle-tested one. The next 
 ```
 .
 ├── README.md                          ← You are here
+├── SECURITY.md                        ← What's not in this repo and why
 ├── .env.example                       ← Required configuration variables
 ├── .gitignore
 ├── package.json
@@ -91,16 +92,10 @@ The honest framing: this is a working system, not a battle-tested one. The next 
 │   ├── architecture.svg               ← Detailed system diagram
 │   └── carrier-deliverability.md      ← A2P 10DLC mini-case-study
 ├── src/
-│   ├── index.js                       ← Entry point, route registration
-│   ├── handlers/
-│   │   ├── voice.js                   ← Telnyx voice webhook handler
-│   │   └── sms.js                     ← Telnyx SMS webhook handler
-│   ├── llm/
-│   │   └── openai.js                  ← LLM integration (prompt redacted)
-│   ├── storage/
-│   │   └── supabase.js                ← Conversation logging
-│   └── utils/
-│       └── cost.js                    ← Per-message cost calculation
+│   ├── index.js                       ← HTTP server, webhook routing
+│   └── services/
+│       └── telnyx.js                  ← Inbound SMS handler (stubbed —
+│                                        production logic in private repo)
 └── examples/
     └── system-prompt.example.txt      ← Generic example, not the real prompt
 ```
@@ -126,7 +121,7 @@ cp .env.example .env
 # - SUPABASE_SERVICE_KEY
 ```
 
-You'll also need: a Telnyx account with A2P 10DLC registration completed for SMS, an OpenAI API key with sufficient quota, and a Supabase project with the schema in `docs/schema.sql` (not included — see notes).
+You'll also need: a Telnyx account with A2P 10DLC registration completed for SMS, an OpenAI API key with sufficient quota, and a Supabase project. Schema details for the conversation/message tables are not included in this public repo — see [SECURITY.md](./SECURITY.md).
 
 ---
 
@@ -162,7 +157,7 @@ Summit Send Labs LLC is a Colorado AI product studio based in Breckenridge. SSL 
 By day, I'm a PMO Manager at O'Reilly Auto Parts overseeing enterprise platform delivery across Supply Chain (Manhattan TMS), Finance (Oracle ERP), and HR (Workday). SSL is what I build outside that role.
 
 - Website: [summitsendlabs.com](https://summitsendlabs.com)
-- LinkedIn: [Travis Opheim](https://linkedin.com/in/YOUR_HANDLE)
+- LinkedIn: [Travis Opheim](https://linkedin.com/in/YOUR_HANDLE)  <!-- TODO: replace YOUR_HANDLE before publishing -->
 
 ---
 

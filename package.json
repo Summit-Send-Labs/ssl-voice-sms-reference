@@ -1,0 +1,36 @@
+{
+  "name": "ssl-voice-sms-reference",
+  "version": "0.1.0",
+  "description": "Reference subset of the Summit Send Labs voice & SMS AI assistant. Built on Telnyx, OpenAI, Railway, and Supabase. See README.md for what is and isn't included.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  },
+  "keywords": [
+    "ai",
+    "sms",
+    "voice",
+    "telnyx",
+    "openai",
+    "reference"
+  ],
+  "author": "Travis Opheim <travis@summitsendlabs.com> (https://summitsendlabs.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Summit-Send-Labs/ssl-voice-sms-reference"
+  },
+  "homepage": "https://github.com/Summit-Send-Labs/ssl-voice-sms-reference#readme",
+  "bugs": {
+    "url": "https://github.com/Summit-Send-Labs/ssl-voice-sms-reference/issues"
+  }
+}
