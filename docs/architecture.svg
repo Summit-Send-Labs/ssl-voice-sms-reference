@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <style>
+      .box-fill { fill: #ffffff; stroke: #1e293b; stroke-width: 2; }
+      .box-text { fill: #0f172a; font-size: 14px; font-weight: 600; text-anchor: middle; }
+      .sub-text { fill: #475569; font-size: 11px; text-anchor: middle; }
+      .channel-fill { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .channel-text { fill: #78350f; font-size: 13px; font-weight: 600; text-anchor: middle; }
+      .compute-fill { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .compute-text { fill: #1e3a8a; font-size: 13px; font-weight: 600; text-anchor: middle; }
+      .data-fill { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .data-text { fill: #14532d; font-size: 13px; font-weight: 600; text-anchor: middle; }
+      .ai-fill { fill: #f3e8ff; stroke: #7c3aed; stroke-width: 2; }
+      .ai-text { fill: #581c87; font-size: 13px; font-weight: 600; text-anchor: middle; }
+      .arrow-line { stroke: #475569; stroke-width: 2; fill: none; }
+      .label-text { fill: #475569; font-size: 10px; font-style: italic; text-anchor: middle; }
+      .title-text { fill: #0f172a; font-size: 18px; font-weight: 700; text-anchor: middle; }
+      .legend-text { fill: #475569; font-size: 11px; }
+    </style>
+  </defs>
+
+  <text x="450" y="32" class="title-text">Summit Send Labs — Voice + SMS AI Assistant</text>
+  <text x="450" y="52" class="sub-text">summitsendlabs.com · single Telnyx number handles both channels</text>
+
+  <!-- INBOUND CALLERS -->
+  <rect x="60" y="100" width="180" height="60" rx="8" class="box-fill"/>
+  <text x="150" y="125" class="box-text">Inbound Caller</text>
+  <text x="150" y="145" class="sub-text">PSTN / mobile dial</text>
+
+  <rect x="660" y="100" width="180" height="60" rx="8" class="box-fill"/>
+  <text x="750" y="125" class="box-text">Inbound Texter</text>
+  <text x="750" y="145" class="sub-text">SMS to SSL number</text>
+
+  <!-- TELNYX CHANNELS -->
+  <rect x="60" y="220" width="180" height="60" rx="8" class="channel-fill"/>
+  <text x="150" y="245" class="channel-text">Telnyx Voice</text>
+  <text x="150" y="265" class="sub-text">Call control + STT/TTS</text>
+
+  <rect x="660" y="220" width="180" height="60" rx="8" class="channel-fill"/>
+  <text x="750" y="245" class="channel-text">Telnyx SMS</text>
+  <text x="750" y="265" class="sub-text">A2P 10DLC registered</text>
+
+  <!-- WEBHOOK ENDPOINTS (RAILWAY) -->
+  <rect x="280" y="340" width="340" height="100" rx="8" class="compute-fill"/>
+  <text x="450" y="370" class="compute-text">Railway — Node.js App Layer</text>
+  <text x="450" y="390" class="sub-text">/webhooks/voice  ·  /webhooks/sms</text>
+  <text x="450" y="410" class="sub-text">Routing · session state · cost calc · error handling</text>
+  <text x="450" y="428" class="sub-text">Webhook signing verification on every request</text>
+
+  <!-- LLM -->
+  <rect x="100" y="500" width="280" height="80" rx="8" class="ai-fill"/>
+  <text x="240" y="528" class="ai-text">OpenAI</text>
+  <text x="240" y="548" class="sub-text">System prompt + SSL context</text>
+  <text x="240" y="566" class="sub-text">Single provider · routing abstracted for later</text>
+
+  <!-- SUPABASE -->
+  <rect x="520" y="500" width="280" height="80" rx="8" class="data-fill"/>
+  <text x="660" y="528" class="data-text">Supabase (Postgres)</text>
+  <text x="660" y="548" class="sub-text">Conversations · messages · cost data</text>
+  <text x="660" y="566" class="sub-text">Service-role key, never exposed client-side</text>
+
+  <!-- ARROWS: Caller → Voice -->
+  <path d="M 150 160 L 150 220" class="arrow-line" marker-end="url(#arrow)"/>
+  <!-- Texter → SMS -->
+  <path d="M 750 160 L 750 220" class="arrow-line" marker-end="url(#arrow)"/>
+
+  <!-- Voice → Railway -->
+  <path d="M 150 280 L 150 380 L 280 380" class="arrow-line" marker-end="url(#arrow)"/>
+  <text x="195" y="340" class="label-text">webhook</text>
+
+  <!-- SMS → Railway -->
+  <path d="M 750 280 L 750 380 L 620 380" class="arrow-line" marker-end="url(#arrow)"/>
+  <text x="700" y="340" class="label-text">webhook</text>
+
+  <!-- Railway → OpenAI -->
+  <path d="M 380 440 L 280 500" class="arrow-line" marker-end="url(#arrow)"/>
+  <text x="290" y="475" class="label-text">prompt + history</text>
+
+  <!-- OpenAI → Railway (response) -->
+  <path d="M 300 500 L 400 440" class="arrow-line" marker-end="url(#arrow)"/>
+  <text x="395" y="475" class="label-text">response</text>
+
+  <!-- Railway → Supabase (write) -->
+  <path d="M 520 440 L 620 500" class="arrow-line" marker-end="url(#arrow)"/>
+  <text x="610" y="475" class="label-text">log + cost</text>
+
+  <!-- Railway → Telnyx (response back) -->
+  <path d="M 320 340 L 200 280" class="arrow-line" marker-end="url(#arrow)"/>
+  <path d="M 580 340 L 700 280" class="arrow-line" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <rect x="40" y="620" width="820" height="60" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="60" y="640" width="14" height="14" class="channel-fill"/>
+  <text x="82" y="652" class="legend-text">Telephony / SMS channels (Telnyx)</text>
+  <rect x="270" y="640" width="14" height="14" class="compute-fill"/>
+  <text x="292" y="652" class="legend-text">Application layer (Railway/Node.js)</text>
+  <rect x="500" y="640" width="14" height="14" class="ai-fill"/>
+  <text x="522" y="652" class="legend-text">LLM (OpenAI)</text>
+  <rect x="640" y="640" width="14" height="14" class="data-fill"/>
+  <text x="662" y="652" class="legend-text">Persistence (Supabase)</text>
+</svg>
